@@ -46,6 +46,10 @@ julia> @btime $A * $B;
   2.729 ms (2 allocations: 7.63 MiB)
 ```
 
+## Caveats
+
+Currently, the LAPACK functions (OpenBLAS) don't use BLIS for BLAS operations but still the BLAS implementations provided by OpenBLAS. There are plans to fix this in a general manner, see https://github.com/JuliaPackaging/Yggdrasil/issues/2657 and https://github.com/JuliaPackaging/Yggdrasil/pull/2658.
+
 ## Related packages
 
 * A more manual approach to accessing BLIS is provided by [BLIS.jl](https://github.com/JuliaLinearAlgebra/BLIS.jl)
