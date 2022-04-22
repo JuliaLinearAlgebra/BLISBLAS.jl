@@ -17,7 +17,7 @@ end
 
 function __init__()
     if blis_jll.is_available()
-        BLAS.lbt_forward(libblis, clear=true)
+        BLAS.lbt_forward(blis, clear=false)
     else
         @warn("blis_jll artifact doesn't seem to be available for your platform!")
     end
