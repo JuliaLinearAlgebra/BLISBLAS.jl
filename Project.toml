@@ -1,6 +1,6 @@
 name = "BLISBLAS"
 uuid = "6f275bd8-fec0-4d39-945b-7e95a765fa1e"
-authors = ["Carsten Bauer <carsten.bauer@uni-paderborn.de> and contributors"]
+authors = ["Carsten Bauer <mail@carstenbauer.eu> and contributors"]
 version = "0.1.0"
 
 [compat]
