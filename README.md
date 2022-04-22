@@ -2,7 +2,7 @@
 
 BLISBLAS.jl is a Julia package that allows users to use the [BLIS](https://github.com/flame/blis) library for Julia's underlying BLAS. Note that OpenBLAS, which Julia ships by default, will still be used for LAPACK functionality (BLIS only provides BLAS!).
 
-Like [MKL.jl](https://github.com/JuliaLinearAlgebra/MKL.jl) for Intel's MKL, this package is based on [libblastrampoline](https://github.com/JuliaLinearAlgebra/libblastrampoline), which enables picking a BLAS (and/or LAPACK) library at runtime, and **requires Julia 1.7+**.
+This package is based on [libblastrampoline](https://github.com/JuliaLinearAlgebra/libblastrampoline), which enables picking a BLAS (and/or LAPACK) library at runtime, and **requires Julia 1.7+**.
 
 ## Installation
 
@@ -43,4 +43,5 @@ julia> @btime $A * $B;
 
 ## Related packages
 
-* https://github.com/JuliaLinearAlgebra/BLIS.jl
+* A more manual approach to accessing BLIS is provided by [BLIS.jl](https://github.com/JuliaLinearAlgebra/BLIS.jl)
+* [MKL.jl](https://github.com/JuliaLinearAlgebra/MKL.jl) for Intel's MKL
