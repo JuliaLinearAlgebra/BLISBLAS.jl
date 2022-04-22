@@ -12,22 +12,14 @@ This package is based on [libblastrampoline](https://github.com/JuliaLinearAlgeb
 
 ## Usage
 
-Simply `using BLISBLAS` is enough.
-
-The following example is run with `OPENBLAS_NUM_THREADS=64` and `BLIS_NUM_THREADS=64` on a 64-core AMD EPYC 7763 (Milan) CPU.
-
+Simply `using BLISBLAS` is enough:
 ```julia
-julia> using LinearAlgebra, BenchmarkTools
+julia> using LinearAlgebra
 
 julia> BLAS.get_config()
 LinearAlgebra.BLAS.LBTConfig
 Libraries: 
 └ [ILP64] libopenblas64_.so
-
-julia> A = rand(1000,1000); B = rand(1000,1000);
-
-julia> @btime $A * $B;
-  3.927 ms (2 allocations: 7.63 MiB)
 
 julia> using BLISBLAS
 
@@ -36,6 +28,19 @@ LinearAlgebra.BLAS.LBTConfig
 Libraries: 
 ├ [ILP64] libopenblas64_.so
 └ [ILP64] libblis.so
+```
+
+The following simple example is run with `OPENBLAS_NUM_THREADS=64` and `BLIS_NUM_THREADS=64` on a 64-core AMD EPYC 7763 (Milan) CPU.
+
+```julia
+julia> using BenchmarkTools
+
+julia> A = rand(1000,1000); B = rand(1000,1000);
+
+julia> @btime $A * $B;
+  3.927 ms (2 allocations: 7.63 MiB)
+
+julia> using BLISBLAS
 
 julia> @btime $A * $B;
   2.729 ms (2 allocations: 7.63 MiB)
