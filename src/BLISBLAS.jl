@@ -4,14 +4,14 @@ using blis_jll
 using LinearAlgebra
 
 function get_num_threads()
-    err = @ccall blis.bli_thread_get_num_threads()::Cint
-    err == -1 && throw(ErrorException("return value was -1"))
-    return nothing
+    ret = @ccall blis.bli_thread_get_num_threads()::Cint
+    ret == -1 && throw(ErrorException("return value was -1"))
+    return ret
 end
 
 function set_num_threads(nthreads)
-    err = @ccall blis.bli_thread_set_num_threads(nthreads::Cint)::Cvoid
-    err == -1 && throw(ErrorException("return value was -1"))
+    ret = @ccall blis.bli_thread_set_num_threads(nthreads::Cint)::Cvoid
+    ret == -1 && throw(ErrorException("return value was -1"))
     return nothing
 end
 
