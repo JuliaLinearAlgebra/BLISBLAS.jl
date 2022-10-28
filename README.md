@@ -1,8 +1,8 @@
 # BLISBLAS.jl
 
-BLISBLAS.jl is a Julia package that allows users to use the [BLIS](https://github.com/flame/blis) library for Julia's underlying BLAS. Note that OpenBLAS, which Julia ships by default, will still be used for LAPACK functionality (BLIS only provides BLAS!).
+BLISBLAS.jl is a Julia package that allows users to use the [BLIS](https://github.com/flame/blis) library for Julia's underlying BLAS. Note that BLIS only provides BLAS but not LAPACK (OpenBLAS will still be used for LAPACK functionality).
 
-This package is based on [libblastrampoline](https://github.com/JuliaLinearAlgebra/libblastrampoline), which enables picking a BLAS (and/or LAPACK) library at runtime, and **requires Julia 1.7+**.
+This package is based on [libblastrampoline](https://github.com/JuliaLinearAlgebra/libblastrampoline), which enables picking a BLAS (and/or LAPACK) library at runtime, and thus **requires Julia 1.7+**.
 
 ## Installation
 
@@ -12,7 +12,8 @@ This package is based on [libblastrampoline](https://github.com/JuliaLinearAlgeb
 
 ## Usage
 
-Simply `using BLISBLAS` is enough:
+Simply `using BLISBLAS` is enough to switch to BLIS for BLAS operations.
+
 ```julia
 julia> using LinearAlgebra
 
@@ -30,6 +31,9 @@ Libraries:
 └ [ILP64] libblis.so
 ```
 
+Note that the BLISBLAS package has to be loaded in every new Julia process. Upon quitting and restarting, Julia will start with the default OpenBLAS.
+
+## "Benchmark"
 The following simple example is run with `OPENBLAS_NUM_THREADS=64` and `BLIS_NUM_THREADS=64` on a 64-core AMD EPYC 7763 (Milan) CPU.
 
 ```julia
