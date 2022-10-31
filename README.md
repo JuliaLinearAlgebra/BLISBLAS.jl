@@ -7,7 +7,7 @@ This package is based on [libblastrampoline](https://github.com/JuliaLinearAlgeb
 ## Installation
 
 ```
-] add https://github.com/carstenbauer/BLISBLAS.jl
+] add BLISBLAS
 ```
 
 ## Usage
