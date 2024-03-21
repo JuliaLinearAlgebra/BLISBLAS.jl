@@ -5,11 +5,13 @@ version = "0.1.0"
 
 [deps]
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+blis32_jll = "e47b3055-b30e-52b1-9cd4-aea7f6c39f40"
 blis_jll = "6136c539-28a5-5bf0-87cc-b183200dce32"
 
 [compat]
+blis32_jll = "0.9"
 blis_jll = "0.9"
-julia = "1"
+julia = "1.6"
 
 [extras]
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"

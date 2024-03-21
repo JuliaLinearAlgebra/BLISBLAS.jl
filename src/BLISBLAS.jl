@@ -1,5 +1,6 @@
 module BLISBLAS
 
+using blis32_jll
 using blis_jll
 using LinearAlgebra
 
@@ -16,6 +17,11 @@ function set_num_threads(nthreads)
 end
 
 function __init__()
+    if blis32_jll.is_available()
+        BLAS.lbt_forward(blis32, clear=false)
+    else
+        @warn("blis32_jll artifact doesn't seem to be available for your platform!")
+    end
     if blis_jll.is_available()
         BLAS.lbt_forward(blis, clear=false)
     else
