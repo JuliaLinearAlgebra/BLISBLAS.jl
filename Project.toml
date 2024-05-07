@@ -1,14 +1,14 @@
 name = "BLISBLAS"
 uuid = "6f275bd8-fec0-4d39-945b-7e95a765fa1e"
 authors = ["Carsten Bauer <mail@carstenbauer.eu> and contributors"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 blis_jll = "6136c539-28a5-5bf0-87cc-b183200dce32"
 
 [compat]
-blis_jll = "0.9"
+blis_jll = "1.0"
 julia = "1"
 
 [extras]
