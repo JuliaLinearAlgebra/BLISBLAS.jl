@@ -18,9 +18,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        julia-version: [1.7, 1.8]
-        julia-arch: [x64]
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        version:
+          - '1.8'
+          - '1.10'
+          - 'nightly'
+        os:
+          - ubuntu-latest
+          - macOS-latest
+          - windows-latest
+        arch:
+          - x64
         # exclude:
         #   - os: macOS-latest
         #     julia-arch: x86
