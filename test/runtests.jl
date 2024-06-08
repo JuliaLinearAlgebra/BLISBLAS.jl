@@ -5,10 +5,10 @@ using Libdl
 
 function blas()
     libs = BLAS.get_config().loaded_libs
-    lib = lowercase(basename(last(libs).libname))
-    if contains(lib, "openblas")
+    libs = map(lib -> lowercase(basename(lib.libname)), libs)
+    if mapreduce(lib -> contains(lib, "openblas"), |, libs)
         return :openblas
-    elseif contains(lib, "blis")
+    elseif mapreduce(lib -> contains(lib, "blis"), |, libs)
         return :blis
     else
         return :unknown
@@ -33,8 +33,11 @@ end
     end
 
     @testset "BLAS" begin
-        # run all BLAS tests of the LinearAlgebra stdlib (i.e. LinearAlgebra/test/blas.jl)
+        # run all BLAS and LAPACK tests of the LinearAlgebra stdlib:
+        # - LinearAlgebra/test/blas.jl
+        # - LinearAlgebra/test/lapack.jl
         linalg_stdlib_test_path = joinpath(dirname(pathof(LinearAlgebra)), "..", "test")
-        include(joinpath(linalg_stdlib_test_path, "blas.jl"))
+        joinpath(linalg_stdlib_test_path, "blas.jl") |> include
+        joinpath(linalg_stdlib_test_path, "lapack.jl") |> include
     end
 end
