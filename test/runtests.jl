@@ -34,7 +34,8 @@ end
 
     @testset "BLAS" begin
         # run all BLAS tests of the LinearAlgebra stdlib (i.e. LinearAlgebra/test/blas.jl)
-        linalg_stdlib_test_path = joinpath(dirname(pathof(LinearAlgebra)), "..", "test")
-        include(joinpath(linalg_stdlib_test_path, "blas.jl"))
+        #linalg_stdlib_test_path = joinpath(dirname(pathof(LinearAlgebra)), "..", "test")
+        #include(joinpath(linalg_stdlib_test_path, "blas.jl"))
+        include("./blas.jl")
     end
 end
