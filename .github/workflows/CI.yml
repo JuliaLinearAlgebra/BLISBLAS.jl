@@ -28,7 +28,7 @@ jobs:
         arch:
           - x64
         include:
-	  - os: macOS-latest
+          - os: macOS-latest
             julia-arch: aarch64
 
     steps:
