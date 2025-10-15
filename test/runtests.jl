@@ -1,6 +1,7 @@
 using Test
 using LinearAlgebra
 using Random
+using Libdl
 
 function blas()
     libs = BLAS.get_config().loaded_libs

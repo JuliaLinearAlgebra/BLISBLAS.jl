@@ -14,27 +14,40 @@ on:
 
 jobs:
   test:
+    name: Julia ${{ matrix.version }} - ${{ matrix.os }} - ${{ matrix.arch }} - ${{ github.event_name }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        julia-version: [1.7, 1.8]
-        julia-arch: [x64]
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-        # exclude:
-        #   - os: macOS-latest
-        #     julia-arch: x86
-
+        version:
+          - '1.10'
+          - '1'
+        os:
+          - ubuntu-latest
+          - windows-latest
+        arch:
+          - x64
+        include:
+          - os: macOS-latest
+            arch: aarch64
+            version: '1.10'
+          - os: macOS-latest
+            arch: aarch64
+            version: '1'
+    
     steps:
-      - uses: actions/checkout@v3.5.2
-      - uses: julia-actions/setup-julia@latest
+      - uses: actions/checkout@v5
+      - uses: julia-actions/setup-julia@v2
         with:
-          version: ${{ matrix.julia-version }}
-      - uses: julia-actions/julia-buildpkg@main
-      - uses: julia-actions/julia-runtest@main
-      - uses: julia-actions/julia-uploadcodecov@master
+          version: ${{ matrix.version }}
+          arch: ${{ matrix.arch }}
+      - uses: julia-actions/cache@v1
+      - uses: julia-actions/julia-buildpkg@v1
+      - uses: julia-actions/julia-runtest@v1
+      - uses: julia-actions/julia-processcoverage@v1
+      - uses: codecov/codecov-action@v5
+        with:
+          file: lcov.info
+          token: ${{ secrets.CODECOV_TOKEN }}
         env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-#      - uses: julia-actions/julia-uploadcoveralls@master
-#        env:
-#          COVERALLS_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
+          JULIA_NUM_THREADS: 4,2
