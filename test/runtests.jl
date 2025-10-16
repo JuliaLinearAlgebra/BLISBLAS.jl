@@ -32,7 +32,7 @@ end
         @test BLISBLAS.get_num_threads() == 3
     end
 
-    @testset "BLAS" begin
+    @testset "BLAS and LAPACK" begin
         # run all BLAS and LAPACK tests of the LinearAlgebra stdlib:
         # - LinearAlgebra/test/blas.jl
         # - LinearAlgebra/test/lapack.jl
