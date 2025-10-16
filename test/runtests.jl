@@ -15,15 +15,15 @@ function blas()
     end
 end
 
-@testset "BLISBLAS.jl" begin
-    @testset "Sanity Tests" begin
+@testset verbose=true "BLISBLAS.jl tests" begin
+    @testset verbose=true "Sanity Tests" begin
         @test blas() == :openblas
         using BLISBLAS
         @test blas() == :blis
         @test LinearAlgebra.peakflops() > 0
     end
 
-    @testset "BLAS threads" begin
+    @testset verbose=true "BLAS threads" begin
         @test isnothing(BLISBLAS.set_num_threads(1))
         @test BLISBLAS.get_num_threads() == 1
         @test isnothing(BLISBLAS.set_num_threads(2))
@@ -32,12 +32,13 @@ end
         @test BLISBLAS.get_num_threads() == 3
     end
 
-    @testset "BLAS and LAPACK" begin
-        # run all BLAS and LAPACK tests of the LinearAlgebra stdlib:
-        # - LinearAlgebra/test/blas.jl
-        # - LinearAlgebra/test/lapack.jl
-        linalg_stdlib_test_path = joinpath(dirname(pathof(LinearAlgebra)), "..", "test")
+    linalg_stdlib_test_path = joinpath(dirname(pathof(LinearAlgebra)), "..", "test")
+
+    @testset verbose=true "LinearAlgebra.jl BLAS tests" begin
         joinpath(linalg_stdlib_test_path, "blas.jl") |> include
+    end
+
+    @testset verbose=true "LinearAlgebra.jl LAPACK tests" begin
         joinpath(linalg_stdlib_test_path, "lapack.jl") |> include
     end
 end
