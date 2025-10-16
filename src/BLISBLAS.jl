@@ -25,8 +25,8 @@ function __init__()
     if blis_available
         BLAS.lbt_forward(blis32, clear=true)
         BLAS.lbt_forward(liblapack32)
-        BLAS.lbt_forward(blis)
-        BLAS.lbt_forward(liblapack)
+        BLAS.lbt_forward(blis, suffix_hint="64_")
+        BLAS.lbt_forward(liblapack, suffix_hint="64_")
     else
         @warn("The artifacts blis_jll and blis32_jll are not available for your platform!")
     end
