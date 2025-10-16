@@ -4,11 +4,17 @@ authors = ["Carsten Bauer <mail@carstenbauer.eu> and contributors"]
 version = "0.2.0"
 
 [deps]
+LAPACK32_jll = "17f450c3-bd24-55df-bb84-8c51b4b939e3"
+LAPACK_jll = "51474c39-65e3-53ba-86ba-03b1b862ec14"
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+blis32_jll = "e47b3055-b30e-52b1-9cd4-aea7f6c39f40"
 blis_jll = "6136c539-28a5-5bf0-87cc-b183200dce32"
 
 [compat]
+blis32_jll = "2"
 blis_jll = "2"
+LAPACK32_jll = "3.12"
+LAPACK_jll = "3.12"
 julia = "1.12"
 
 [extras]
