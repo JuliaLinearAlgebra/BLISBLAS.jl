@@ -52,5 +52,5 @@ julia> @btime $A * $B;
 
 ## Related packages
 
-* A more manual approach to accessing BLIS is provided by [BLIS.jl](https://github.com/JuliaLinearAlgebra/BLIS.jl)
-* [MKL.jl](https://github.com/JuliaLinearAlgebra/MKL.jl) for Intel's MKL
+* [MKL.jl](https://github.com/JuliaLinearAlgebra/MKL.jl)
+* [AppleAccelerate.jl](https://github.com/JuliaLinearAlgebra/AppleAccelerate.jl)
