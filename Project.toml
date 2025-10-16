@@ -15,7 +15,7 @@ blis32_jll = "2"
 blis_jll = "2"
 LAPACK32_jll = "3.12"
 LAPACK_jll = "3.12"
-julia = "1.12"
+julia = "1.9"
 
 [extras]
 Libdl = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
